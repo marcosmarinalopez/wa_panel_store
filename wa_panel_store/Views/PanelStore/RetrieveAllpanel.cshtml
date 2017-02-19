@@ -1,0 +1,38 @@
+﻿@model IEnumerable<wa_panel_store.Models.cPanel>
+
+@{
+    ViewBag.Title = "Available Panels";
+}
+
+<h2>Available Panels</h2>
+
+
+<table class="table table-striped table-hover ">
+    <thead>
+        <tr>
+            <th>Panel ID</th>
+            <th>Panel Name</th>
+            <th>Panel Company ID</th>
+            <th>Panel Company Desc</th>
+            <th>Panel Location</th>
+            <th>Panel Latitude</th>
+            <th>Panel Longitude</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.p_i_panel_id)</td>
+                <td>@Html.DisplayFor(modelItem => item.p_s_panel_name)</td>
+                <td>@Html.DisplayFor(modelItem => item.p_i_panel_company_id)</td>
+                <td>@Html.DisplayFor(modelItem => item.p_s_panel_company_desc)</td>
+                <td>@Html.DisplayFor(modelItem => item.p_s_panel_location)</td>
+                <td>@Html.DisplayFor(modelItem => item.p_dl_panel_latitude)</td>
+                <td>@Html.DisplayFor(modelItem => item.p_dl_panel_longitude)</td>
+            </tr>
+        }
+    </tbody>
+</table>
+

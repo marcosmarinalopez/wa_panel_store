@@ -1,0 +1,81 @@
+﻿@model wa_panel_store.Models.cRegisterUser
+
+@{
+    ViewBag.Title = "ErrorRegisterUser";
+}
+
+<h2>Register User</h2>
+
+@using (@Html.BeginForm("RegisterUser", "Log", FormMethod.Post))
+{
+    @*@Html.TextBoxFor(m=> m.p_s_register_user_email, new { @class="form-control"})
+        @Html.PasswordFor(m=>m.p_s_register_user_password, new { @class = "form-control" })*@
+}
+
+<p>Email already registered. Register with other email or try to remember it.</p>
+<form class="form-horizontal" method="post">
+    <fieldset>
+        @*<legend>Register User</legend>*@
+
+        <div class="form-group">
+            <label for="userAlias" class="col-lg-2 control-label">User Alias</label>
+            <div class="col-lg-10">
+                @*<input type="text" class="form-control" id="inputAlias" name="inputAlias" placeholder="User Alias" value="@(Model.p_s_register_user_alias)">*@
+                @Html.EditorFor(m => m.p_s_register_user_alias, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="userName" class="col-lg-2 control-label">User Name</label>
+            <div class="col-lg-10">
+                @*<input type="text" class="form-control" id="inputName" name="inputName" placeholder="User Name" value="@(Model.p_s_register_user_name)">*@
+                @Html.EditorFor(m => m.p_s_register_user_name, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="userSurname" class="col-lg-2 control-label">User Surname</label>
+            <div class="col-lg-10">
+                @*<input type="text" class="form-control" id="inputSurname" name="inputSurname" placeholder="User Surname" value="@( Model.p_s_register_user_surname )">*@
+                @Html.EditorFor(m => m.p_s_register_user_alias, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="userCompany" class="col-lg-2 control-label">Company</label>
+            <div class="col-lg-10">
+                @*<input type="text" class="form-control" id="inputCompany" name="inputCompany" placeholder="User Company" value="@( Model.p_s_register_user_company )">*@
+                @Html.EditorFor(m => m.p_s_register_user_company, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <label for="inputEmail" class="col-lg-2 control-label">Email</label>
+            <div class="col-lg-10">
+                @*<input type="text" class="form-control" id="inputEmail" name="inputEmail" placeholder="Email" value="@( Model.p_s_register_user_email )">*@
+                @Html.EditorFor(m => m.p_s_register_user_email, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="inputPassword" class="col-lg-2 control-label">Password</label>
+            <div class="col-lg-10">
+                @*<input type="password" class="form-control" id="inputPassword" name="inputPassword" placeholder="Password" value="@( Model.p_s_register_user_password )">*@
+                @Html.EditorFor(m => m.p_s_register_user_password, new { htmlAttributes = new { @class = "form-control" } })
+                @*<div class="checkbox">
+                        <label>
+                            <input type="checkbox"> Checkbox
+                        </label>
+                    </div>*@
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-lg-10 col-lg-offset-2">
+                <button type="reset" class="btn btn-default" value="reset">Reset</button>
+                <button type="submit" class="btn btn-primary" value="submit">Submit</button>
+            </div>
+        </div>
+    </fieldset>
+</form>
+

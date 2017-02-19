@@ -1,0 +1,336 @@
+﻿@model wa_panel_store.Models.cPanelManager
+@using wa_panel_store.Models
+@{
+    ViewBag.Title = "Select panels";
+}
+
+<!-- Title -->
+<h2>Select Panels</h2>
+
+
+@*@using (@Html.BeginForm("RetrieveAllpanel", "PanelStore"))*@
+@using (@Html.BeginForm())
+{
+    <div class="container">
+        <div class="row">
+            <!-- Left column for display filters-->
+            <div class="col-sm-2">
+
+                <h4>Filters</h4>
+                <br />
+
+                @for (int i = 0; i < Model.p_lst_filter_types.Count; i++)
+                {
+                    <p>@Model.p_lst_filter_types[i].p_s_filter_type</p>
+
+                    for (int j = 0; j < Model.p_lst_filters.Count; j++)
+                    {
+                        if (Model.p_lst_filters[j].p_s_filter_type == Model.p_lst_filter_types[i].p_s_filter_type)
+                        {
+                            @Html.CheckBox(Model.p_lst_filters[j].p_s_filter.ToString(), false)
+                            @Html.Label(Model.p_lst_filters[j].p_s_filter.ToString())
+                            <br />
+                        }
+                    }
+                    <hr />
+                    }
+
+
+                @Html.HiddenFor(m=>Model.p_c_db)
+                @Html.HiddenFor(m => Model.p_c_selected_panel)
+                
+                @for (var z = 0; z < Model.p_lst_c_panels.Count; z++)
+                {
+
+                    @*@Html.HiddenFor(x => x.p_lst_c_panels[z])*@
+                    @Html.HiddenFor(x => x.p_lst_c_panels[z].p_c_db)
+                    @Html.HiddenFor(x => x.p_lst_c_panels[z].p_dl_panel_latitude)
+                    @Html.HiddenFor(x => x.p_lst_c_panels[z].p_dl_panel_longitude)
+                    @Html.HiddenFor(x => x.p_lst_c_panels[z].p_dt_timestamp)
+                    @Html.HiddenFor(x => x.p_lst_c_panels[z].p_i_panel_company_id)
+                    @Html.HiddenFor(x => x.p_lst_c_panels[z].p_i_panel_id)
+                    @Html.HiddenFor(x => x.p_lst_c_panels[z].p_s_panel_address)
+                    @Html.HiddenFor(x => x.p_lst_c_panels[z].p_s_panel_company_desc)
+                    @Html.HiddenFor(x => x.p_lst_c_panels[z].p_s_panel_country)
+                    @Html.HiddenFor(x => x.p_lst_c_panels[z].p_s_panel_country_code)
+                    @Html.HiddenFor(x => x.p_lst_c_panels[z].p_s_panel_location)
+                    @Html.HiddenFor(x => x.p_lst_c_panels[z].p_s_panel_main_place)
+                    @Html.HiddenFor(x => x.p_lst_c_panels[z].p_s_panel_name)
+                    @Html.HiddenFor(x => x.p_lst_c_panels[z].p_s_panel_province)
+                    @Html.HiddenFor(x => x.p_lst_c_panels[z].p_s_panel_street)
+                    @Html.HiddenFor(x => x.p_lst_c_panels[z].p_s_panel_sub_place)
+                    @Html.HiddenFor(x => x.p_lst_c_panels[z].p_s_panel_sub_place1)
+
+                }
+
+
+                @for (int v = 0; v < Model.p_lst_filters.Count; v++)
+                {
+                    @*@Html.HiddenFor(m => Model.p_lst_filters[v])*@
+                    @Html.HiddenFor(m => Model.p_lst_filters[v].p_b_filter_selected)
+                    @Html.HiddenFor(m => Model.p_lst_filters[v].p_c_filter_type)
+                    @Html.HiddenFor(m => Model.p_lst_filters[v].p_s_filter)
+                    @Html.HiddenFor(m => Model.p_lst_filters[v].p_s_filter_type)
+                    }
+                
+                @for (int u = 0; u < Model.p_lst_filter_types.Count; u++)
+                {
+                    @Html.HiddenFor(m => Model.p_lst_filter_types[u].p_dt_timestamp)
+                    @Html.HiddenFor(m => Model.p_lst_filter_types[u].p_s_filter_desc)
+                    @Html.HiddenFor(m => Model.p_lst_filter_types[u].p_s_filter_id)
+                    @Html.HiddenFor(m => Model.p_lst_filter_types[u].p_s_filter_type)
+                    @Html.HiddenFor(m => Model.p_lst_filter_types[u].p_s_panel_field)
+                }
+
+                <p>
+                    <input type="submit" class="btn btn-default" value="Apply Filters" />
+                </p>
+
+
+
+
+            </div>
+            <!-- Left column for display filters-->
+
+
+            <!-- Right column for display panels and other info -->
+            <div class="col-sm-10">
+
+                <div class="row">
+
+                    @for (int i = 0; i < Model.p_lst_c_panels.Count; i++)
+                    {
+                        
+                            <div class="col-md-4">
+                                <div class="thumbnail">
+                                    <img src="http://www.oohmedia.com.au/sites/default/files/sites/default/files/Articles/PRandEvents/oOh!%20Excite%20Interactive%20PAN%20movie%20campaign.jpg" height="100" width="100" />
+                                    <div class="caption">
+
+                                        <!-- Table -->
+                                        <table class="table table-striped table-hover ">
+                                          
+                                            <tbody>
+
+                                                <tr>
+                                                    <td>Panel name:</td>
+                                                    <td>@Model.p_lst_c_panels[i].p_s_panel_name</td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>Panel ID:</td>
+                                                    <td>@Model.p_lst_c_panels[i].p_i_panel_id</td>
+
+                                                </tr>
+
+                                                <tr>
+                                                    <td>Panel Location:</td>
+                                                    <td>@Model.p_lst_c_panels[i].p_s_panel_street</td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td></td>
+                                                    <td>@Model.p_lst_c_panels[i].p_s_panel_sub_place</td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td></td>
+                                                    <td>@Model.p_lst_c_panels[i].p_s_panel_main_place</td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td></td>
+                                                    <td>@Model.p_lst_c_panels[i].p_s_panel_province</td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td></td>
+                                                    <td>@Model.p_lst_c_panels[i].p_s_panel_country</td>
+                                                </tr>
+
+                                                @*<tr>
+                                                    <td>Latitude:</td>
+                                                    <td>@Model.p_lst_c_panels[i].p_dl_panel_latitude</td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>Longitude:</td>
+                                                    <td>@Model.p_lst_c_panels[i].p_dl_panel_longitude</td>
+                                                </tr>*@
+
+                                            </tbody>
+                                        </table>
+                                        <!-- Table -->
+                                        
+                                        <!-- Trigger the modal with a button -->
+                                        <button id=@Model.p_lst_c_panels[i].p_i_panel_id  type="button" class="btn btn-info"  data-toggle="modal" data-target="#modal-@Model.p_lst_c_panels[i].p_i_panel_id">+ Info</button>
+                                        <!-- Trigger the modal with a button -->
+
+                                        <!-- Modal -->
+                                        <div id="modal-@Model.p_lst_c_panels[i].p_i_panel_id" class="modal fade" role="dialog">
+                                            <div class="modal-dialog">
+
+                                                <!-- Modal content-->
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                        <h4 class="modal-title">Panel ID: @Model.p_lst_c_panels[i].p_i_panel_id</h4>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                            <p>Panel information</p>
+                                                            <img src="http://www.oohmedia.com.au/sites/default/files/sites/default/files/Articles/PRandEvents/oOh!%20Excite%20Interactive%20PAN%20movie%20campaign.jpg" height="100" width="100" />
+                                                            
+                                                            <!-- Table -->
+                                                            <table class="table table-striped table-hover ">
+
+                                                                <tbody>
+
+                                                                    <tr>
+                                                                        <td>Panel name:</td>
+                                                                        <td>@Model.p_lst_c_panels[i].p_s_panel_name</td>
+                                                                    </tr>
+
+                                                                    <tr>
+                                                                        <td>Panel ID:</td>
+                                                                        <td>@Model.p_lst_c_panels[i].p_i_panel_id</td>
+
+                                                                    </tr>
+
+                                                                    <tr>
+                                                                        <td>Panel Location:</td>
+                                                                        <td>@Model.p_lst_c_panels[i].p_s_panel_street</td>
+                                                                    </tr>
+
+                                                                    <tr>
+                                                                        <td></td>
+                                                                        <td>@Model.p_lst_c_panels[i].p_s_panel_sub_place</td>
+                                                                    </tr>
+
+                                                                    <tr>
+                                                                        <td></td>
+                                                                        <td>@Model.p_lst_c_panels[i].p_s_panel_main_place</td>
+                                                                    </tr>
+
+                                                                    <tr>
+                                                                        <td></td>
+                                                                        <td>@Model.p_lst_c_panels[i].p_s_panel_province</td>
+                                                                    </tr>
+
+                                                                    <tr>
+                                                                        <td></td>
+                                                                        <td>@Model.p_lst_c_panels[i].p_s_panel_country</td>
+                                                                    </tr>
+
+                                                                    <tr>
+                                                                        <td>Latitude:</td>
+                                                                        <td>@Model.p_lst_c_panels[i].p_dl_panel_latitude</td>
+                                                                    </tr>
+
+                                                                    <tr>
+                                                                        <td>Longitude:</td>
+                                                                        <td>@Model.p_lst_c_panels[i].p_dl_panel_longitude</td>
+                                                                    </tr>
+
+                                                                </tbody>
+                                                            </table>
+                                                            <!-- Table -->
+                                                            @{
+                                                                var url = string.Format(
+                                                                    "https://www.google.com/maps/embed/v1/place?q={0}%2C%20{1}&zoom=10&maptype=satellite&key=AIzaSyA1I6NdYuyxyW4ekPBrTQe_sTMWRCfWft8",
+                                                                    @Model.p_lst_c_panels[i].p_dl_panel_latitude.ToString().Replace(",", "."),
+                                                                    @Model.p_lst_c_panels[i].p_dl_panel_longitude).ToString().Replace(",", ".");
+                                                            }
+                                                            <iframe width="500" height="450" frameborder="0" style="border:0" src=@url allowfullscreen align="middle"></iframe>
+                                                            
+                                                        
+                                                    </div>
+
+                                                    <div class="modal-footer">
+                                                        <div class="col-lg-10 col-lg-offset-2">
+                                                            @{var i_panel_id = @Model.p_lst_c_panels[i].p_i_panel_id; }
+                                                            @Html.ActionLink("Add To Cart", "AddPanelToCart", "PanelStore", new { i_id = i_panel_id }, new { @class = "btn btn-default" })
+                                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <!-- Modal -->
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        
+                    }
+
+                </div>
+
+               
+
+                
+                <!-- Test Tab -->
+                <ul class="nav nav-tabs">
+                    <li class="active"><a href="#home" data-toggle="tab">Home</a></li>
+                    <li><a href="#all_panels" data-toggle="tab">All Panels</a></li>
+                    <li><a href="#panels_by_company" data-toggle="tab">Panels By Company</a></li>
+                    <li><a href="#panels_by_administrative_area" data-toggle="tab">Panels by Administrative Area</a></li>
+                    <li><a href="#panels_by_locality" data-toggle="tab">Panels by Locality</a></li>
+                    <li><a href="#panels_by_type" data-toggle="tab">Panels by Type</a></li>
+                    <li><a href="#profile" data-toggle="tab">Profile</a></li>
+                </ul>
+                                
+                <div id="myTabContent" class="tab-content">
+                    <div class="tab-pane fade active in" id="home">
+                        <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
+
+                    </div>
+                    <div class="tab-pane fade" id="panels_by_company">
+                        <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit.</p>
+                    </div>
+                </div>
+
+                <!-- Test Tab -->
+            </div>
+            <!-- Right column for display panels and other info -->
+        </div>
+    </div>
+}
+
+<!-- Scripts -->
+<script type="text/javascript">
+
+    var make_button_active = function ()
+    {
+        //Get item siblings
+        var sibling = ($(this).siblings());
+
+        //Remove activev class on all buttons
+        sibling.each(function (index)
+            {
+                $(this).removeClass('active');
+            }
+        )
+
+        //Add the clicked button class
+        $(this).addClass('active');
+    }
+
+    //Attach events to menu
+    $(document).ready(function ()
+    {
+        $("nav nav-tabs li").click(make_button_active);
+    }
+    )
+
+</script type=text/javascript">
+
+<script>
+
+
+
+
+</script>
+
+
+<!-- Scripts -->

@@ -1,0 +1,66 @@
+﻿
+@{
+    ViewBag.Title = "DashBoard";
+}
+
+<h2>DashBoard</h2>
+<h3>@Session["UserName"] Information</h3>
+
+
+@using (@Html.BeginForm("DashBoard", "Log"))
+{
+
+
+    <form class="form-horizontal">
+        <fieldset>
+
+            <div class="form-group">
+                <label for="userID" class="col-lg-2 control-label">User ID: </label>
+                <div class="col-lg-10">                                 
+                    @Html.TextBox("userID", Session["UserID"].ToString(), new { @class = "form-control" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="userName" class="col-lg-2 control-label">User Name: </label>
+                <div class="col-lg-10">
+                    @Html.TextBox("userName", Session["UserName"].ToString(), new { @class = "form-control" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="userSurname" class="col-lg-2 control-label">User Surname: </label>
+                <div class="col-lg-10">
+                    @Html.TextBox("userSurname", Session["UserSurname"].ToString(), new { @class = "form-control" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="userCompany" class="col-lg-2 control-label">User Company: </label>
+                <div class="col-lg-10">      
+                    @Html.TextBox("userCompany", Session["UserCompany"].ToString(), new { @class = "form-control" })                                  
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="userEmail" class="col-lg-2 control-label">User Email: </label>
+                <div class="col-lg-10">   
+                    @Html.TextBox("userEmail", Session["UserEmail"].ToString(), new { @class = "form-control" })
+                </div>
+            </div>
+           
+
+            <div class="form-group">
+                <div class="col-lg-10 col-lg-offset-2">
+                    <div class="col-lg-10">
+                        @*@Html.ActionLink("Back", "Index", "Home")*@                        
+                        @Html.ActionLink("Back", "Index", "Home", null, new { @class = "btn btn-primary" })
+                    </div>
+                </div>
+            </div>
+
+        </fieldset>
+
+
+    </form>
+}

@@ -1,0 +1,120 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Panel Store</title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+</head>
+<body>
+    
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="http:\\www.cuende.com">
+                        <img src="~/images/CUENDE_logo.jpg" height="25" />
+                    </a>
+                </div>
+
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                        <li>@Html.ActionLink("Panel Store", "PanelStore", "PanelStore")</li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown<span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li>
+                                    <a href="#">
+                                        Action </ a ></ li >
+                                        < li >< a href="#">Another action
+                                    </a>
+                                </li>
+                                <li><a href="#"> Something else here</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#"> Separated link</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#"> One more separated link</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <form class="navbar-form navbar-left" role="search">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Search">
+                        </div>
+                        <button type="submit" class="btn btn-default">Submit</button>
+                    </form>
+
+                    @if (Session["UserID"] != null)
+                    {
+                        <ul class="nav navbar-nav navbar-right">                            
+                            <li>@Html.ActionLink(Session["UserAlias"].ToString(), "DashBoard", "Log")</li>
+                            <li>@Html.ActionLink("Sign Out", "LogOut", "Log")</li>
+                        </ul>
+                        
+                    }
+                    else
+                    {
+                        <ul class="nav navbar-nav navbar-right">
+                           <li>@Html.ActionLink("LogIn", "LogInPage", "Log")</li>
+                           <li>@Html.ActionLink("Register", "RegisterUser", "Log")</li>
+
+                        </ul>
+                    }
+
+                    
+                </div>
+            </div>
+        </nav>
+
+        <div class="container">
+            @RenderBody()            
+        </div>
+
+        <hr />
+        <footer class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6 col-md-3">
+                        <p class="text-footer" id="cuende-footer-desc">
+                            CUENDE INFOMETRICS
+                            <br>Out of Home Advertising Metrics
+                            <br>All Rights Reserved
+                            <br>&copy; @DateTime.Now.Year - Panel Store
+                        </p>
+                    </div>
+                    <div class="col-sm-6 col-md-6">
+                        <div class="row">
+                            <div class="col-md-12 hidden-xs text-center">
+                                <a href="http://www.metricooh.com/"><img src="~/images/logo_metricooh.gif" class="img-footer" height="25"></a>
+                                <a href="http://www.cuende.com/"><img src="~/images/CUENDE_logo.jpg" class="img-footer" height="25"></a>
+                                <a href="http://www.digitalglobe.com/"><img src="~/images/digital-globe-logo.png" class="img-footer" height="25"></a>
+                                <a href="http://www.tomtom.com/"><img src="~/images/TomTom_logo.jpg" class="img-footer" height="25"></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-3">
+                        <div class="row">
+                            <div class="col-md-12 hidden-xs text-center">
+                                <a href="#"><i class="fa fa-3x fa-fw fa-twitter text-muted"></i></a>
+                                <a href="#"><i class="fa fa-3x fa-facebook fa-fw text-muted"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        
+    
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+</body>
+
+</html>
