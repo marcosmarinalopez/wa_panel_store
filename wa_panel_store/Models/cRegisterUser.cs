@@ -296,6 +296,7 @@ namespace wa_panel_store.Models
                 
                 b_rc = b_rc && this.m_c_db.pb__insert(s_insert);
                 this.m_c_db.pb__finish_transaction(b_rc);
+
             }
             catch (Exception)
             {
